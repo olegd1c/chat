@@ -1,0 +1,45 @@
+<div class="row">
+  <form class="form-horizontal" id="contact-form" #tkdForm="ngForm">
+
+    <div class="control-group " [hidden] = "true">
+      <label class="control-label" for="from">from</label>
+      <div class="controls">
+        <input type="message" name="from" id="from" placeholder="from" [(ngModel)]="model.from" ngControl="from" class="form-control input-lg "
+          required aria-required=”true”>
+      </div>
+    </div>
+
+    <div class="control-group " [hidden] = "true">
+      <label class="control-label" for="to">to</label>
+      <div class="controls">
+        <input type="message" name="to" id="to" placeholder="to" [(ngModel)]="model.to" ngControl="to" class="form-control input-lg "
+          required aria-required=”true”>
+      </div>
+    </div>
+
+    <div class="control-group ">
+      <label class="control-label" for="message">message</label>
+      <div class="controls">
+        <input type="message" name="message" id="message" placeholder="message" [(ngModel)]="model.message" ngControl="message" class="form-control input-lg "
+          required aria-required=”true”>
+      </div>
+    </div>
+
+    <button type="button" [disabled]="!tkdForm.form.valid" class="ui icon button btn-success" (click)="sentMessage()">sent message<i class="trash outline icon"></i>
+    </button>
+
+  </form>
+  <br>
+  <div class="col-sm-3">
+    <p class="bg-success text-center">rooms</p>
+    <div *ngFor="let group of groupsMes">
+      <app-chat-group [group]="group" (fiiterGroup)="onFiiterGroup($event)"></app-chat-group>
+    </div>
+  </div>
+
+  <div class="col-sm-9">
+    <p class="bg-success text-center">messages</p>
+    <div *ngFor="let message of messages | groupPipe : groupFilter">
+      <app-chat-item [message]="message"></app-chat-item>
+    </div>
+  </div>

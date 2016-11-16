@@ -1,0 +1,118 @@
+{
+    "success": 1,
+    "messages": [
+        {
+            "id": "12",
+            "from": "oleg1",
+            "to": "vasya1",
+            "message": "hhh",
+            "date": "2016-11-15 11:11:47"
+        },
+        {
+            "id": "11",
+            "from": "oleg1",
+            "to": "vasya1",
+            "message": "hello 2",
+            "date": "2016-11-15 10:34:11"
+        },
+        {
+            "id": "10",
+            "from": "oleg",
+            "to": "vasya",
+            "message": "hello vasya",
+            "date": "2016-11-15 10:33:22"
+        },
+        {
+            "id": "9",
+            "from": "fff",
+            "to": "ggg",
+            "message": "hhhhh",
+            "date": "2016-11-15 10:32:41"
+        },
+        {
+            "id": "8",
+            "from": "fff",
+            "to": "ggg",
+            "message": "hhh",
+            "date": "2016-11-15 10:32:32"
+        },
+        {
+            "id": "7",
+            "from": "ggg",
+            "to": "hhh",
+            "message": "jjj",
+            "date": "2016-11-15 10:28:52"
+        },
+        {
+            "id": "6",
+            "from": "olegd1c@gmail.com",
+            "to": "oleg_1c@ukr.net",
+            "message": "good day",
+            "date": "2016-11-14 15:34:23"
+        },
+        {
+            "id": "4",
+            "from": "oleg_1c@ukr.net",
+            "to": "olegd1c@gmail.com",
+            "message": "hello bro",
+            "date": "2016-11-02 10:00:00"
+        },
+        {
+            "id": "2",
+            "from": "olegd1c@gmail.com",
+            "to": "oleg_1c@ukr.net",
+            "message": "hello bro",
+            "date": "2016-11-02 05:09:00"
+        },
+        {
+            "id": "3",
+            "from": "olegd1c@gmail.com",
+            "to": "oleg_1c@ukr.net",
+            "message": "hello",
+            "date": "2016-11-01 15:20:50"
+        },
+        {
+            "id": "1",
+            "from": "olegd1c@gmail.com",
+            "to": "oleg_1c@ukr.net",
+            "message": "hello",
+            "date": "2016-11-01 00:00:00"
+        },
+        {
+            "id": "5",
+            "from": "olegd1c@gmail.com",
+            "to": "oleg_1c@ukr.net",
+            "message": "hello oleg",
+            "date": "0000-00-00 00:00:00"
+        }
+    ],
+    "groups": [
+        {
+            "name": "all"
+        },
+        {
+            "name": "oleg1"
+        },
+        {
+            "name": "vasya1"
+        },
+        {
+            "name": "oleg"
+        },
+        {
+            "name": "vasya"
+        },
+        {
+            "name": "fff"
+        },
+        {
+            "name": "ggg"
+        },
+        {
+            "name": "hhh"
+        },
+        {
+            "name": "oleg_1c@ukr.net"
+        }
+    ]
+}
