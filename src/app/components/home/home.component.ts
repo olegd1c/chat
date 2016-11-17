@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit {
       //console.log("auth: "+this.auth.userProfile);
       this.chatService.getMessages(this.auth).subscribe(
         res => {
-          if(this.groupFilter !=null) {
-            console.log("groupFilter: "+ this.groupFilter.name +" "+this.groupFilter.countStyle);
+          if (this.groupFilter != null) {
+            console.log("groupFilter: " + this.groupFilter.name + " " + this.groupFilter.countStyle);
             console.log(this.groupsMes);
           }
           this.messages = res['messages'];
@@ -73,11 +73,11 @@ export class HomeComponent implements OnInit {
 
   private updateMessages() {
 
-    if (this.groupFilter == null && this.groupsMes !=null && this.groupsMes.length > 0) {
+    if (this.groupFilter == null && this.groupsMes != null && this.groupsMes.length > 0) {
       console.log("updateMessages");
       this.groupsMes[0].countStyle = true;
       this.groupFilter = this.groupsMes[0];
-      
+
       this.model.to = this.groupFilter.name;
     }
     this.destroyStyle(true);
@@ -101,11 +101,13 @@ export class HomeComponent implements OnInit {
     */
 
   }
-destroyStyle(chek:boolean){
-    let indexG =  this.chatService.findObByNameInArray(this.groupFilter.name,this.groupsMes);
-    if (indexG >= 0 ) this.groupsMes[indexG].countStyle = chek;
+  destroyStyle(chek: boolean) {
+    if (this.groupFilter != null) {
+      let indexG = this.chatService.findObByNameInArray(this.groupFilter.name, this.groupsMes);
+      if (indexG >= 0) this.groupsMes[indexG].countStyle = chek;
+    }
 
-}
+  }
   private sentMessage() {
     console.log('start sentCart M');
     this.chatService.sentMessage(this.model)
