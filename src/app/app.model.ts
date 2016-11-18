@@ -38,6 +38,12 @@ export class Message {
   }
 }
 
+export interface IMessageGroup {
+  name?: string;
+  description?: string;
+  countStyle?: boolean;
+}
+
 export class MessageGroup {
   constructor(
     public name: string,

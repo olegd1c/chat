@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MessageGroup } from '../../app.model';
+import { MessageGroup,IMessageGroup } from '../../app.model';
+import {ChatService} from '../../services/chat-service';
 
 @Component({
   selector: 'app-chat-group',
@@ -9,16 +10,23 @@ import { MessageGroup } from '../../app.model';
 export class ChatGroupComponent implements OnInit {
   @Input() group: MessageGroup;
   @Output() fiiterGroup: EventEmitter<MessageGroup>;
+  model:IMessageGroup;
 
-  constructor() {
+  constructor(private chatService: ChatService) {
     this.fiiterGroup = new EventEmitter<MessageGroup>();
   }
 
   ngOnInit() {
+    this.model = this.group;
+    this.model.description = this.model.name;
+    //this.model = {"name":this.group.name, "description":this.group.name, "countStyle": this.group.countStyle};
+    this.model.description = this.chatService.hideContact(this.model.description); 
+    //console.log(this.group);
   }
 
-
   filterGroup() {
+    console.log("filterGroup");
+    //console.log(this.group);
     this.fiiterGroup.emit(this.group);
   }
 

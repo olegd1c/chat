@@ -1,6 +1,7 @@
 
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../../app.model';
+import { Message, IMessage } from '../../app.model';
+import {ChatService} from '../../services/chat-service';
 
 @Component({
   selector: 'app-chat-item',
@@ -9,9 +10,13 @@ import { Message } from '../../app.model';
 })
 export class ChatItemComponent implements OnInit {
   @Input() message: Message;
-  constructor() { }
+  model: IMessage;
+  constructor(private chatService: ChatService) {
 
-  ngOnInit() {
   }
 
+  ngOnInit() {
+    this.model = this.message;
+    this.model.from = this.chatService.hideContact(this.message.from);
+  }
 }

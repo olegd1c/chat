@@ -1,7 +1,7 @@
 <div class="row">
-  <form class="form-horizontal" id="contact-form" #tkdForm="ngForm">
+  <form class="form-horizontal col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contact-form" #tkdForm="ngForm">
 
-    <div class="control-group " [hidden] = "true">
+    <div class="control-group " [hidden]="true">
       <label class="control-label" for="from">from</label>
       <div class="controls">
         <input type="message" name="from" id="from" placeholder="from" [(ngModel)]="model.from" ngControl="from" class="form-control input-lg "
@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="control-group " [hidden] = "true">
+    <div class="control-group " [hidden]="true">
       <label class="control-label" for="to">to</label>
       <div class="controls">
         <input type="message" name="to" id="to" placeholder="to" [(ngModel)]="model.to" ngControl="to" class="form-control input-lg "
@@ -29,17 +29,19 @@
     </button>
 
   </form>
-  <br>
-  <div class="col-sm-3">
+</div>
+<div class="row" id="top10">  
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
     <p class="bg-success text-center">rooms</p>
     <div *ngFor="let group of groupsMes">
       <app-chat-group [group]="group" (fiiterGroup)="onFiiterGroup($event)"></app-chat-group>
     </div>
   </div>
 
-  <div class="col-sm-9">
+  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
     <p class="bg-success text-center">messages</p>
     <div *ngFor="let message of messages | groupPipe : groupFilter">
       <app-chat-item [message]="message"></app-chat-item>
     </div>
   </div>
+</div>

@@ -66,6 +66,13 @@ export class ChatService {
     return indexP;
   }
 
+  hideContact( srtSplit: string): string {
+    let newSrt = srtSplit;
+    let resSplit: string[] = srtSplit.split("@");
+    if (resSplit.length > 0) newSrt = resSplit[0];
+    return newSrt;
+  }
+
   findObByNameInArray(name: string, arrayObj: any[]): number {
 
     let indexP: number = -1;
