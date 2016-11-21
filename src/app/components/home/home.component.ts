@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   groupsMes: MessageGroup[];
   groupFilter: MessageGroup;
   countEmail: string;
-  public model: IMessageContainer;
+  model: IMessageContainer;
 
   constructor(private chatService: ChatService, private groupPipe: GroupPipe, private auth: Auth) {
     this.defVal();
@@ -30,35 +30,38 @@ export class HomeComponent implements OnInit {
   private defVal() {
     this.groupsMes = new Array<MessageGroup>();
     this.messages = new Array<Message>();
-    this.model = { from: "", to: "", message: "" };
+    this.model = {};
   }
 
   private setFrom() {
     if (this.model.from == "" && this.auth.authenticated()) {
       //console.log(this.auth.userProfile);
       this.model.from = this.auth.userProfile.email;
+      //console.log("setFrom: "+this.auth.userProfile.email);
     }
   }
 
   private refreshData(): void {
     if (!this.auth.authenticated()) {
-      console.log("defVal");
+      //console.log("defVal");
       this.defVal();
       this.updateMessages();
       this.subscribeToData();
     }
     else {
-      console.log("load");
+      //console.log("load");
       this.setFrom();
       //console.log("auth: "+this.auth.userProfile);
       this.chatService.getMessages(this.auth).subscribe(
         res => {
           if (this.groupFilter != null) {
-            console.log("groupFilter: " + this.groupFilter.name + " " + this.groupFilter.countStyle);
-            console.log(this.groupsMes);
+            //console.log("groupFilter: " + this.groupFilter.name + " " + this.groupFilter.countStyle);
+            //console.log(this.groupsMes);
           }
           this.messages = res['messages'];
           this.groupsMes = res['groups'];
+          //console.log("groupsMes: ");
+          //console.log(this.groupsMes);
           this.updateMessages();
           this.subscribeToData();
         }
@@ -74,7 +77,7 @@ export class HomeComponent implements OnInit {
   private updateMessages() {
 
     if (this.groupFilter == null && this.groupsMes != null && this.groupsMes.length > 0) {
-      console.log("updateMessages");
+      //console.log("updateMessages");
       this.groupsMes[0].countStyle = true;
       this.groupFilter = this.groupsMes[0];
 
@@ -109,13 +112,13 @@ export class HomeComponent implements OnInit {
 
   }
   private sentMessage() {
-    console.log('start sentCart M');
+    //console.log('start sentCart M');
     this.chatService.sentMessage(this.model)
       .subscribe(
       res => {
-        console.log("sentCart subscribe");
+        //console.log("sentCart subscribe");
         if (res.status = 200 && res.json.success == 1) {
-          console.log("sentCart subscribe ok");
+          //console.log("sentCart subscribe ok");
           this.model.message = "";
         }
       },
@@ -134,7 +137,6 @@ export class HomeComponent implements OnInit {
     this.groupFilter.countStyle = true;
     this.messages = this.groupPipe.transform(this.messages, this.groupFilter);
     this.model.to = this.groupFilter.name;
-
   }
 
 }

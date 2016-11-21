@@ -17,15 +17,14 @@ export class ChatGroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.model = this.group;
+
+    this.model = this.chatService.cloneObj(this.model, this.group);
     this.model.description = this.model.name;
-    //this.model = {"name":this.group.name, "description":this.group.name, "countStyle": this.group.countStyle};
     this.model.description = this.chatService.hideContact(this.model.description); 
-    //console.log(this.group);
   }
 
   filterGroup() {
-    console.log("filterGroup");
+    //console.log("filterGroup");
     //console.log(this.group);
     this.fiiterGroup.emit(this.group);
   }

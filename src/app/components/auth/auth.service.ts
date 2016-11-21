@@ -38,7 +38,7 @@ export class Auth {
           console.log("auth error: "+error);
           return;
         }
-        console.log("auth OK");
+        //console.log("auth OK");
         profile.user_metadata = profile.user_metadata || {};
         localStorage.setItem('profile', JSON.stringify(profile));
         this.userProfile = profile;

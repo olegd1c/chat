@@ -30,10 +30,10 @@ export class ChatService {
   }
 
   sentMessage(model: IMessageContainer): any {
-    console.log('start sentCart');
+    //console.log('start sentCart');
 
     //let messageContainer = new MessageContainer(model.from, model.to, model.message);
-    console.log(JSON.stringify(model));
+    //console.log(JSON.stringify(model));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append("Accept", 'application/json');
 
@@ -46,8 +46,8 @@ export class ChatService {
 
     return this.http.request(new Request(requestoptions))
       .map((res: Response) => {
-        console.log("sentMess map");
-        console.log(res);
+        //console.log("sentMess map");
+        //console.log(res);
         if (res) {
           return { status: res.status, json: res.json() }
         }
@@ -66,11 +66,26 @@ export class ChatService {
     return indexP;
   }
 
-  hideContact( srtSplit: string): string {
+  hideContact(srtSplit: string): string {
     let newSrt = srtSplit;
     let resSplit: string[] = srtSplit.split("@");
     if (resSplit.length > 0) newSrt = resSplit[0];
     return newSrt;
+  }
+
+  isYou(modelMes:any,auth:Auth): Boolean {
+    let rez = false;
+    if(modelMes.from == this.getUserEmail(auth)) rez = true;
+    
+    return rez;
+  }
+
+  cloneObj(model, obj):any{
+    model= {};
+    for (var key in obj) {
+      model[key] = obj[key];
+    }    
+    return model;
   }
 
   findObByNameInArray(name: string, arrayObj: any[]): number {

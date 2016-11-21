@@ -1,15 +1,16 @@
 export interface IMessage {
-  id: number;
-  from: string;
-  to: string;
-  message: string;
-  date: Date;
+  id?: number;
+  from?: string;
+  to?: string;
+  message?: string;
+  date?: Date;
+  description?: string;
 }
 
 export interface IMessageContainer {
-  from: string;
-  to: string;
-  message: string;
+  from?: string;
+  to?: string;
+  message?: string;
 }
 
 export class MessageContainer {
