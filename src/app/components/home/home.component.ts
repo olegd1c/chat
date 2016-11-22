@@ -30,13 +30,13 @@ export class HomeComponent implements OnInit {
   private defVal() {
     this.groupsMes = new Array<MessageGroup>();
     this.messages = new Array<Message>();
-    this.model = {};
+    this.model = {from:'',to:'',message:''};
   }
 
   private setFrom() {
-    if (this.model.from == "" && this.auth.authenticated()) {
-      //console.log(this.auth.userProfile);
-      this.model.from = this.auth.userProfile.email;
+    console.log("setFrom: "+this.model.from);
+    if ((this.model.from == "") && this.auth.authenticated()) {
+      this.model.from = this.chatService.getUserEmail(this.auth);
       //console.log("setFrom: "+this.auth.userProfile.email);
     }
   }
