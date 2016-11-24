@@ -53,13 +53,18 @@ export class HomeComponent implements OnInit {
       this.setFrom();
       //console.log("auth: "+this.auth.userProfile);
       this.chatService.getMessages(this.auth).subscribe(
-        res => {
+        (res:IRepsMessage) => {
           if (this.groupFilter != null) {
             //console.log("groupFilter: " + this.groupFilter.name + " " + this.groupFilter.countStyle);
             //console.log(this.groupsMes);
           }
-          this.messages = res['messages'];
-          this.groupsMes = res['groups'];
+          if(res.success) {
+            this.messages = res.messages;
+            this.groupsMes = res.groups;
+          }
+          else{
+            console.log("error: "+res.message);      
+          }
           //console.log("groupsMes: ");
           //console.log(this.groupsMes);
           this.updateMessages();

@@ -15,6 +15,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
+
+
 export class Angular2ShopRoutingModule {   
 
  }

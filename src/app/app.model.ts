@@ -25,7 +25,9 @@ export class MessageContainer {
 
 export interface IRepsMessage {
   success: number;
-  messages: IMessage[];
+  message: string;
+  messages: Message[];
+  groups: MessageGroup[];
 }
 
 export class Message {

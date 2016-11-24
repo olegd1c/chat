@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { IMessage, Message, MessageContainer, IMessageContainer } from '../app.model';
+import { IMessage, Message, MessageContainer, IMessageContainer,IRepsMessage } from '../app.model';
 import { Http, Headers, RequestOptions, Response, URLSearchParams, RequestMethod, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -24,11 +24,11 @@ export class ChatService {
     //console.log(url);
     return this.http.get(url)
       // ...and calling .json() on the response to return data
-      .map((res: Response) => res.json())
-      //...errors if any
+      //.map(res =>res.json())
+      .map(this.extractData)
+      //.catch(this.handleError);
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-
   sentMessage(model: IMessageContainer): any {
     //console.log('start sentCart');
 
@@ -110,5 +110,21 @@ getUserEmail(auth: Auth): string {
     return user_email;
     //return auth.userProfile.identities[0].user_id;
   }
+
+  private extractData(res: Response) {
+       if (res.status < 200 || res.status >= 300) {
+             throw new Error('Bad response status: ' + res.status);
+           }
+
+       return res.json();    
+       //let body = res.json();
+       //return body.data || { };
+    }  
+
+  private handleError (error: any) {
+        let errMsg = error.message || 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+    }    
 }
 
